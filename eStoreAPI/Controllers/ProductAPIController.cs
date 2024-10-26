@@ -2,6 +2,7 @@
 using BusinessObject.DTO.ProductDTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace eStoreAPI.Controllers
 {
@@ -21,7 +22,7 @@ namespace eStoreAPI.Controllers
         {
             try
             {
-                List<Product> products = _context.Products.Select(x => new Product
+                List<Product> products = _context.Products.Include(x=>x.Category).Select(x => new Product
                 {
                     ProductId = x.ProductId,
                     Weight = x.Weight,
