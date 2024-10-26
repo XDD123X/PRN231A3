@@ -55,5 +55,18 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             .HasForeignKey(p => p.CategoryId);
 
         builder.Entity<Category>().HasKey(c => c.CategoryId);
+
+
+        builder.Entity<Category>().HasData(
+      new Category { CategoryId = 1, CategoryName = "Beverages" },
+      new Category { CategoryId = 2, CategoryName = "Food" }
+  );
+
+        builder.Entity<Product>().HasData(
+            new Product { ProductId = 1, CategoryId = 1, ProductName = "Coffee", Weight = 12, UnitPrice = 12, UnitsInStock = 100 },
+            new Product { ProductId = 2, CategoryId = 1, ProductName = "Tea", Weight = 12, UnitPrice = 5, UnitsInStock = 150 },
+            new Product { ProductId = 3, CategoryId = 2, ProductName = "Bread", Weight = 12, UnitPrice = 2, UnitsInStock = 200 }
+        );
+
     }
 }

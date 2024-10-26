@@ -36,6 +36,18 @@ namespace eStore.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            CategoryId = 1,
+                            CategoryName = "Beverages"
+                        },
+                        new
+                        {
+                            CategoryId = 2,
+                            CategoryName = "Food"
+                        });
                 });
 
             modelBuilder.Entity("BusinessObject.Order", b =>
@@ -83,8 +95,8 @@ namespace eStore.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("UnitPrice")
+                        .HasColumnType("int");
 
                     b.HasKey("OrderId", "ProductId");
 
@@ -122,6 +134,35 @@ namespace eStore.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            ProductId = 1,
+                            CategoryId = 1,
+                            ProductName = "Coffee",
+                            UnitPrice = 12m,
+                            UnitsInStock = 100,
+                            Weight = 12m
+                        },
+                        new
+                        {
+                            ProductId = 2,
+                            CategoryId = 1,
+                            ProductName = "Tea",
+                            UnitPrice = 5m,
+                            UnitsInStock = 150,
+                            Weight = 12m
+                        },
+                        new
+                        {
+                            ProductId = 3,
+                            CategoryId = 2,
+                            ProductName = "Bread",
+                            UnitPrice = 2m,
+                            UnitsInStock = 200,
+                            Weight = 12m
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
